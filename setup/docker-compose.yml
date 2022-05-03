@@ -91,6 +91,21 @@ services:
     networks: 
       - postgres-net
 
+  atm-marvin-webapp:
+    image: noh4nsen/atm-marvin-webapp:latest
+    restart: always
+    container_name: marvin
+    ports:
+      - 80:80  
+    depends_on:
+      - marvin-postgres-db
+      - atm-autenticador-api
+      - atm-clientes-api
+      - atm-fornecedor-api
+      - atm-atendimento-api
+    networks: 
+      - postgres-net
+
 networks:
   postgres-net:
     driver: bridge
